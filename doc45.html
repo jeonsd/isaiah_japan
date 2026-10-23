@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>イザヤ書_45章</title>
+<style>
+  :root { --bg:#FAF8F3; --ink:#1F2A24; --mute:#5E6B63; --acc:#2E7D4F; --hl:#AEDDBF; --bar:#1F3A2B; --fs:22px; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif; background:var(--bg); color:var(--ink); line-height:1.95; word-break:keep-all; padding-bottom:84px; }
+  .wrap { max-width:760px; margin:0 auto; padding:26px 20px 0; }
+  header h1 { font-size:30px; font-weight:900; line-height:1.4; letter-spacing:-0.01em; }
+  header .meta { color:var(--mute); font-size:16px; margin:6px 0 4px; }
+  header .rule { height:4px; width:64px; background:var(--acc); border-radius:4px; margin:14px 0 22px; }
+  #resume { display:none; background:#EAF3EC; border:2px solid #BFD9C7; border-radius:14px; padding:12px 16px; margin-bottom:18px; font-size:17px; }
+  #text p { font-size:var(--fs); margin-bottom:1.1em; }
+  #text h2.hd { font-size:calc(var(--fs) + 4px); font-weight:900; margin:1.6em 0 .6em; color:var(--acc); line-height:1.5; }
+  .seg { cursor:pointer; border-radius:8px; padding:1px 3px; -webkit-box-decoration-break:clone; box-decoration-break:clone; scroll-margin-top:24px; transition:background .2s; }
+  .seg.on { background:var(--hl); box-shadow:0 0 0 3px var(--hl); }
+  .bar { position:fixed; left:0; right:0; bottom:0; background:var(--bar); color:#fff; padding:0 12px calc(6px + env(safe-area-inset-bottom,0px)); box-shadow:0 -4px 18px rgba(0,0,0,.25); z-index:50; }
+  .prog { height:10px; background:rgba(255,255,255,.22); cursor:pointer; overflow:hidden; margin:0 -12px 6px; }
+  .prog i { display:block; height:100%; width:0; background:#8fe0a8; }
+  .bar .in { max-width:900px; margin:0 auto; display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; }
+  .tm { font-size:15px; font-variant-numeric:tabular-nums; white-space:nowrap; padding:0 6px; opacity:.95; }
+  button { font:inherit; font-weight:900; font-size:16px; border:0; border-radius:12px; padding:0 12px; height:44px; min-width:44px; background:rgba(255,255,255,.16); color:#fff; cursor:pointer; }
+  button:active { transform:scale(.96); }
+  button:focus-visible { outline:3px solid #FFE680; outline-offset:2px; }
+  #play { background:#3FAE6A; font-size:18px; min-width:100px; }
+  button.o { font-size:14px; min-width:40px; padding:0 10px; background:rgba(255,255,255,.1); }
+  #tolist { display:none; font-size:16px; color:var(--mute); text-decoration:none; font-weight:700; margin-bottom:6px; }
+  #nvnote { display:none; background:#FFF3DC; color:#1F2A24; border:2px solid #F0D49A; border-radius:14px; padding:10px 14px; margin:8px 0; font-size:17px; line-height:1.6; text-align:center; }
+  #nvnote button { background:var(--acc); color:#fff; padding:0 18px; margin-left:8px; font-size:17px; }
+  .nvcard { display:none; margin:34px 0 10px; background:#fff; border:2px solid #DCE6DF; border-radius:16px; padding:18px 20px; }
+  .nvcard .lb { color:var(--mute); font-size:16px; }
+  .nvcard .nm { font-size:calc(var(--fs) + 2px); font-weight:900; margin:4px 0 14px; line-height:1.5; }
+  .nvcard a.go { display:inline-block; background:var(--acc); color:#fff; text-decoration:none; font-weight:900; font-size:19px; border-radius:14px; padding:12px 22px; }
+  @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 rgba(63,174,106,.75); } 50% { box-shadow:0 0 0 10px rgba(63,174,106,0); } }
+  #play.wait { animation:pulse 1.2s infinite; }
+  #resume button { background:var(--acc); color:#fff; height:auto; padding:8px 14px; margin-left:8px; font-size:16px; }
+  @media (max-width:640px) { header h1 { font-size:25px; } button { height:42px; padding:0 9px; } #play { min-width:84px; } }
+  @media print { .bar { display:none; } body { padding-bottom:0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a id="tolist" href="#">← 목록으로</a>
+    <h1>イザヤ書_45章</h1>
+    <div class="meta" id="meta"></div>
+    <div class="rule"></div>
+  </header>
+  <div id="resume"></div>
+  <main id="text"></main>
+  <div class="nvcard" id="nvcard"><div class="lb">다음 글</div><div class="nm" id="nvname"></div><a class="go" id="nvgo" href="#">다음 글 열기 ▶</a></div>
+</div>
+
+<div class="bar">
+  <div id="nvnote"></div>
+  <div class="prog" id="prog" aria-label="재생 위치"><i id="fill"></i></div>
+  <div class="in">
+    <button id="pt" class="o" aria-label="앞 글">앞 글</button>
+    <button id="prev" aria-label="앞 문장" title="앞 문장">⏮</button>
+    <button id="back" aria-label="10초 뒤로" title="10초 뒤로">↺10</button>
+    <button id="play" aria-label="재생">▶ 재생</button>
+    <button id="fwd" aria-label="10초 앞으로" title="10초 앞으로">10↻</button>
+    <button id="next" aria-label="다음 문장" title="다음 문장">⏭</button>
+    <button id="nt" class="o" aria-label="다음 글">다음 글</button>
+    <span class="tm"><span id="cur">0:00</span> / <span id="tot">0:00</span></span>
+    <button id="spd" class="o" aria-label="재생 속도">1.0x</button>
+    <button id="fsm" class="o" aria-label="글자 줄이기">가-</button>
+    <button id="fbg" class="o" aria-label="글자 키우기">가+</button>
+    <button id="fs" class="o" aria-label="전체 화면" title="전체 화면 (F 키)">⛶ 전체</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  const TITLE = "イザヤ書_45章", AUDIO_SRC = "doc45_2610231055.mp3", DUR = 449, SEGS = [{"t":"イザヤ書45章","s":0,"e":1.512,"p":true,"h":false},{"t":"全体の流れ","s":2.16,"e":3.265,"p":true,"h":false},{"t":"45章は、「主は、油注がれた者キュロスに、こう言われる」と始まります。","s":4.068,"e":9.582,"p":false,"h":false},{"t":"「わたしは彼の右手を握り、その前に国々を打ち倒し、王たちの腰の帯を解き、その前に扉を開き、城門を閉ざさせないようにした」(45:1)。","s":9.864,"e":19.907,"p":false,"h":false},{"t":"「わたしはあなたの前に行き、険しい所を平らにし、青銅の扉を打ち砕き、鉄のかんぬきを切り離す。","s":20.196,"e":27.933,"p":false,"h":false},{"t":"わたしは、暗やみの中の財宝、隠された場所の宝を、あなたに与える。","s":28.224,"e":33.562,"p":false,"h":false},{"t":"それは、あなたが、わたしが主であり、あなたの名を呼ぶ、イスラエルの神であることを知るためだ」(45:2-3)。","s":33.84,"e":40.579,"p":false,"h":false},{"t":"わたしのしもべヤコブのため、わたしが選んだイスラエルのために、わたしはあなたの名を呼び、称号を与えた。","s":40.86,"e":47.949,"p":false,"h":false},{"t":"あなたはわたしを知らなかったが、わたしはあなたに力を帯びさせる(45:4-5)。","s":48.24,"e":52.639,"p":false,"h":false},{"t":"それは、日の昇る所から日の沈む所まで、人々が、わたしのほかに神がいないことを知るためだ。","s":52.92,"e":60.075,"p":false,"h":false},{"t":"「わたしは主。","s":60.372,"e":61.2,"p":false,"h":false},{"t":"ほかにはいない。","s":62.28,"e":63.22,"p":false,"h":false},{"t":"わたしは光を造り、闇を創造し、平和をつくり、わざわいを創造する。","s":64.188,"e":69.682,"p":false,"h":false},{"t":"わたしは主、これらすべてを行う」(45:6-7)。","s":69.984,"e":72.514,"p":false,"h":false},{"t":"天よ、上から義を滴らせよ。","s":72.828,"e":75.081,"p":false,"h":false},{"t":"雲は義を注げ。","s":75.384,"e":76.628,"p":false,"h":false},{"t":"地は開いて救いを実らせ、義も共に芽生えさせよ。","s":77.292,"e":80.947,"p":false,"h":false},{"t":"わたしは主、これを創造した(45:8)。","s":81.252,"e":83.481,"p":true,"h":false},{"t":"しかし、自分を形造った方に争いを挑む者は災いだ。","s":84.132,"e":88.579,"p":false,"h":false},{"t":"粘土が陶器師に、「何を作っているのか」と言い、「あなたの作ったものには、手がない」と言うだろうか。","s":88.884,"e":95.502,"p":false,"h":false},{"t":"父に向かって、「何を生んだのか」、母に、「何を産んだのか」と言う者は災いだ(45:9-10)。","s":95.796,"e":101.165,"p":false,"h":false},{"t":"イスラエルの聖なる方、これを形造った方は、こう言われる。","s":101.448,"e":105.742,"p":false,"h":false},{"t":"「来るべきことについて、わたしに問うのか。","s":106.02,"e":108.712,"p":false,"h":false},{"t":"わたしの子らについて、わたしの手のわざについて、わたしに命じるのか」(45:11)。","s":109.008,"e":113.784,"p":false,"h":false},{"t":"わたしが地を造り、その上に人を創造した。","s":114.084,"e":117.364,"p":false,"h":false},{"t":"わたしの手が天を広げ、その万象に命じた。","s":117.648,"e":121.013,"p":false,"h":false},{"t":"わたしは、義をもって彼を呼び起こし、彼の道をすべてまっすぐにする。","s":121.284,"e":126.347,"p":false,"h":false},{"t":"彼は、わたしの町を建て、わたしの捕らわれ人を、代価も報酬もなしに、解き放つ(45:12-13)。","s":126.648,"e":132.818,"p":true,"h":false},{"t":"エジプトの稼ぎ、クシュの商品、背の高いセバ人は、あなたのもとに来て、あなたのものとなり、鎖につながれて、あなたの後について来る。","s":133.452,"e":143.202,"p":false,"h":false},{"t":"彼らはあなたにひれ伏し、「神は確かにあなたのうちにおられる。","s":143.496,"e":147.544,"p":false,"h":false},{"t":"ほかに神はいない」と言う(45:14)。","s":147.816,"e":149.508,"p":false,"h":false},{"t":"「まことに、あなたはご自身を隠される神。","s":149.832,"e":152.793,"p":false,"h":false},{"t":"イスラエルの神、救い主」(45:15)。","s":153.072,"e":155.018,"p":false,"h":false},{"t":"偶像を作る者はみな、恥を見、共に辱められる。","s":155.304,"e":159.414,"p":false,"h":false},{"t":"しかし、イスラエルは、主によって、永遠の救いで救われ、とこしえに恥を受けず、辱められることもない(45:16-17)。","s":159.696,"e":167.226,"p":true,"h":false},{"t":"天を創造された方、すなわち神である主は、こう言われる。","s":167.868,"e":172.151,"p":false,"h":false},{"t":"「わたしは主。","s":172.44,"e":173.268,"p":false,"h":false},{"t":"ほかにはいない。","s":174.348,"e":175.288,"p":false,"h":false},{"t":"わたしは、隠れた所、暗やみの地で語らなかった。","s":176.256,"e":180.036,"p":false,"h":false},{"t":"わたしはヤコブの子孫に、『むなしく、わたしを求めよ』とは言わなかった。","s":180.324,"e":185.245,"p":false,"h":false},{"t":"わたしは主、義を語り、正しいことを告げる」(45:18-19)。","s":185.544,"e":188.96,"p":false,"h":false},{"t":"「集まって来い。","s":189.252,"e":190.099,"p":false,"h":false},{"t":"国々から逃れて来た者たちよ。","s":191.16,"e":193.255,"p":false,"h":false},{"t":"木の偶像をかついで、救えない神に祈る者は、何も知らない」(45:20)。","s":193.572,"e":198.054,"p":false,"h":false},{"t":"「告げよ、共に論じよ。","s":198.324,"e":200.115,"p":false,"h":false},{"t":"だれが、昔からこれを聞かせ、前から告げたのか。","s":200.412,"e":204.131,"p":false,"h":false},{"t":"わたしは主ではなかったか。","s":204.408,"e":206.119,"p":false,"h":false},{"t":"わたしのほかに神はいない。","s":206.424,"e":208.16,"p":false,"h":false},{"t":"義なる神、救い主。","s":208.44,"e":210.165,"p":false,"h":false},{"t":"わたしのほかにはいない」(45:21)。","s":210.456,"e":211.901,"p":false,"h":false},{"t":"そして、この章の、大きな呼びかけが来ます。","s":212.364,"e":215.313,"p":false,"h":false},{"t":"「地の果てのすべての者よ。","s":215.604,"e":217.226,"p":false,"h":false},{"t":"わたしを仰ぎ見て、救われよ。","s":217.548,"e":219.695,"p":false,"h":false},{"t":"わたしは神。","s":219.996,"e":220.899,"p":false,"h":false},{"t":"ほかにはいない」(45:22)。","s":221.904,"e":222.844,"p":false,"h":false},{"t":"「わたしは自分にかけて誓う。","s":223.812,"e":225.665,"p":false,"h":false},{"t":"わたしの口から義が出て、決して取り消されない。","s":225.936,"e":229.128,"p":false,"h":false},{"t":"すべてのひざは、わたしの前にかがみ、すべての舌は、誓う」(45:23)。","s":229.428,"e":233.973,"p":false,"h":false},{"t":"「ただ主にだけ、義と力がある」と、人々は言う。","s":234.252,"e":237.793,"p":false,"h":false},{"t":"主に対して怒っていた者たちはみな、主のもとに来て、恥を見る。","s":238.104,"e":242.608,"p":false,"h":false},{"t":"しかし、イスラエルのすべての子孫は、主によって義とされ、誇る(45:24-25)。","s":242.892,"e":247.542,"p":true,"h":false},{"t":"各節の解説","s":248.184,"e":249.466,"p":true,"h":false},{"t":"1節の、キュロスが「油注がれた者」、つまり、メシアと呼ばれるのは、聖書の中で、きわめて珍しいことです。","s":250.128,"e":258.178,"p":false,"h":false},{"t":"ここでは、「メシア」という言葉が、王として、神に任命された者を指す、広い意味で使われています。","s":258.48,"e":265.03,"p":false,"h":false},{"t":"キュロスが、終わりの時に来られる、救い主キリストと同じ存在だという意味ではありません。","s":265.356,"e":271.211,"p":false,"h":false},{"t":"ただし、異邦の王を、主の油注がれた者と呼ぶほど、主が歴史を支配しておられる、ということが示されています。","s":271.512,"e":279.356,"p":true,"h":false},{"t":"4~5節の、「あなたはわたしを知らなかったが」は、キュロスが、主を信じていたわけではないことを示します。","s":280.008,"e":287.201,"p":false,"h":false},{"t":"主は、人が知らないところでも、ご自分の計画のために、人を用いられます。","s":287.496,"e":293.088,"p":false,"h":false},{"t":"このことは、神の主権の大きさを教えます。","s":293.364,"e":296.378,"p":true,"h":false},{"t":"7節の「平和をつくり、わざわいを創造する」は、解釈の難しい言葉です。","s":297,"e":302.651,"p":false,"h":false},{"t":"「わざわい」は、道徳的な悪ではなく、さばきとして来る災いや苦難を指すと読まれます。","s":302.94,"e":308.941,"p":false,"h":false},{"t":"神が、悪を造られたという意味ではありません。","s":309.24,"e":312.29,"p":false,"h":false},{"t":"光と闇、平和と災いという対比は、神が、すべてのものの主であり、ペルシアの二元論のように、善悪の二つの神がいるのではない、ということを語っています。","s":312.588,"e":324.43,"p":true,"h":false},{"t":"9~10節の、粘土と陶器師の比喩は、29章16節でも出てきました。","s":325.08,"e":330.968,"p":false,"h":false},{"t":"民が、神のご計画に文句を言うことを戒める言葉です。","s":331.272,"e":335.523,"p":false,"h":false},{"t":"この比喩は、新約聖書のローマ人への手紙9章でも、神の主権を語るために引かれています。","s":335.808,"e":342.45,"p":false,"h":false},{"t":"改革派の神学が、神の主権を語るときに、特に重く受け取る箇所の一つです。","s":342.72,"e":348.591,"p":true,"h":false},{"t":"13節の「彼」は、キュロスを指すと読まれます。","s":349.236,"e":352.517,"p":false,"h":false},{"t":"「代価も報酬もなしに」捕らわれ人を解き放つという言葉は、キュロスが実際に、捕囚の民を、帰還させたことと結びついて読まれます。","s":352.8,"e":362.118,"p":false,"h":false},{"t":"ここでも、神が、異邦の王を用いて、ご自分の民を救い出されるという、大きなご計画が語られます。","s":362.412,"e":369.911,"p":true,"h":false},{"t":"15節の「ご自身を隠される神」は、神が、自分の民からも、時に隠れておられるように思える、という経験を表します。","s":370.548,"e":379.799,"p":false,"h":false},{"t":"しかし、同時に、「救い主」であることも、語られています。","s":380.088,"e":384.38,"p":false,"h":false},{"t":"神の隠れが、救いの否定ではないことを、ここで教えられます。","s":384.66,"e":389.005,"p":true,"h":false},{"t":"22節の「地の果てのすべての者よ。","s":389.664,"e":392.333,"p":false,"h":false},{"t":"わたしを仰ぎ見て、救われよ」は、神の救いの招きが、イスラエルだけでなく、すべての人に向けられていることを示す、有名な言葉です。","s":392.616,"e":402.264,"p":false,"h":false},{"t":"ここには、救いが、人の行いではなく、神を仰ぎ見ることによって与えられる、という福音の姿が、すでに現れています。","s":402.552,"e":411.554,"p":true,"h":false},{"t":"23節の「すべてのひざは、わたしの前にかがみ」は、新約聖書で、パウロが、キリストの栄光を語るとき、この言葉を引いています。","s":412.2,"e":421.955,"p":false,"h":false},{"t":"主ご自身が語られた言葉が、キリストについても当てはまる、というのは、改革派の伝統が、キリストの神性を語るときに、よく指摘するところです。","s":422.244,"e":432.687,"p":true,"h":false},{"t":"25節の「主によって義とされる」は、義が、人の行いではなく、主から与えられることを語ります。","s":433.332,"e":440.609,"p":false,"h":false},{"t":"この「義とされる」という言葉は、新約聖書の、信仰による義認の教えと、深くつながっています。","s":440.892,"e":447.897,"p":true,"h":false}], NAV = {"prev":{"href":"doc44.html","title":"イザヤ書_44章"},"next":{"href":"doc46.html","title":"イザヤ書_46章"},"list":"index.html"};
+  const SPEEDS = [0.8, 1, 1.2, 1.5], FS = [18, 20, 22, 25, 28, 32];
+  const KEY = 'narr:' + TITLE + ':' + AUDIO_SRC;
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  let spd = 1, fsi = 2, last = -1, lastUser = 0, playing = false, tickId = 0;
+  const audio = new Audio(AUDIO_SRC);
+  audio.preload = 'metadata';
+
+  function pref(k, v) { try { if (v === undefined) { return localStorage.getItem(KEY + ':' + k); } localStorage.setItem(KEY + ':' + k, String(v)); } catch (e) { return null; } }
+  const savedSpd = parseInt(pref('spd'), 10); if (savedSpd >= 0 && savedSpd < SPEEDS.length) { spd = savedSpd; }
+  const savedFs = parseInt(pref('fs'), 10); if (savedFs >= 0 && savedFs < FS.length) { fsi = savedFs; }
+
+  function fmt(s) { s = Math.max(0, s || 0); const m = Math.floor(s / 60), x = Math.floor(s % 60); return m + ':' + String(x).padStart(2, '0'); }
+
+  /* 글 그리기 */
+  (function build() {
+    let html = '', para = '';
+    SEGS.forEach((g, i) => {
+      const span = '<span class="seg" id="g' + i + '" data-i="' + i + '">' + esc(g.t) + '</span> ';
+      if (g.h) { if (para) { html += '<p>' + para + '</p>'; para = ''; } html += '<h2 class="hd">' + span + '</h2>'; }
+      else { para += span; if (g.p) { html += '<p>' + para + '</p>'; para = ''; } }
+    });
+    if (para) { html += '<p>' + para + '</p>'; }
+    $('text').innerHTML = html;
+    $('meta').textContent = '듣는 시간 약 ' + fmt(DUR || (SEGS.length ? SEGS[SEGS.length - 1].e : 0)) + ' · 읽는 문장을 누르면 그 곳부터 들려요';
+    $('tot').textContent = fmt(DUR);
+  })();
+
+  function applyFs() { document.documentElement.style.setProperty('--fs', FS[fsi] + 'px'); }
+  function applySpd() { audio.playbackRate = SPEEDS[spd]; audio.defaultPlaybackRate = SPEEDS[spd]; $('spd').textContent = SPEEDS[spd].toFixed(1) + 'x'; }
+  applyFs(); applySpd();
+
+  /* 강조와 따라가기 */
+  window.addEventListener('wheel', () => { lastUser = Date.now(); }, { passive: true });
+  window.addEventListener('touchmove', () => { lastUser = Date.now(); }, { passive: true });
+  function idxAt(t) { let k = -1; for (let i = 0; i < SEGS.length; i++) { if (SEGS[i].s <= t + 0.03) { k = i; } else { break; } } return k; }
+  function mark(i, follow) {
+    if (i === last) { return; }
+    const old = $('g' + last); if (old) { old.classList.remove('on'); }
+    last = i;
+    const el = $('g' + i); if (!el) { return; }
+    el.classList.add('on');
+    if (follow && Date.now() - lastUser > 2500) { try { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {} }
+  }
+  function paint() {
+    const t = audio.currentTime || 0, d = audio.duration || DUR || 0;
+    $('cur').textContent = fmt(t);
+    if (d > 0) { $('fill').style.width = Math.min(100, t / d * 100) + '%'; $('tot').textContent = fmt(d); }
+    mark(idxAt(t), playing);
+  }
+  function loop() { paint(); if (playing) { tickId = requestAnimationFrame(loop); } }
+  function setPlaying(p) {
+    playing = p; $('play').textContent = p ? '❚❚ 일시정지' : '▶ 재생'; $('play').setAttribute('aria-label', p ? '일시정지' : '재생');
+    cancelAnimationFrame(tickId); if (p) { loop(); }
+  }
+  function play() { $('play').classList.remove('wait'); const pr = audio.play(); setPlaying(true); if (pr && pr.catch) { pr.catch(() => setPlaying(false)); } }
+  function pause() { audio.pause(); setPlaying(false); pref('pos', audio.currentTime || 0); }
+  function toggle() { if (playing) { pause(); } else { play(); } }
+  function seek(t) { audio.currentTime = Math.max(0, Math.min(t, (audio.duration || DUR || t))); paint(); }
+  function jump(i) { if (i < 0 || i >= SEGS.length) { return; } lastUser = 0; seek(SEGS[i].s); mark(i, true); if (!playing) { play(); } }
+
+  audio.addEventListener('timeupdate', () => { if (!playing) { paint(); } });
+  audio.addEventListener('loadedmetadata', () => { $('tot').textContent = fmt(audio.duration); });
+  audio.addEventListener('ended', () => { setPlaying(false); pref('pos', 0); const o = $('g' + last); if (o) { o.classList.remove('on'); } last = -1; });
+  /* 글 이동: 앞 글·다음 글 단추를 눌렀을 때만 이동합니다 (자동으로 넘어가지 않음) */
+  const navApi = { to: h => { location.href = h; } };
+  function goNext() { if (NAV && NAV.next) { pref('pos', 0); navApi.to(NAV.next.href + '#cont'); } }
+  (function () {
+    const pt = $('pt'), nt = $('nt');
+    if (!NAV) { pt.style.display = 'none'; nt.style.display = 'none'; return; }
+    if (NAV.prev) { pt.title = '앞 글: ' + NAV.prev.title; pt.onclick = () => navApi.to(NAV.prev.href); } else { pt.style.display = 'none'; }
+    if (NAV.next) {
+      nt.title = '다음 글: ' + NAV.next.title; nt.onclick = () => navApi.to(NAV.next.href + '#cont');
+      $('nvname').textContent = NAV.next.title; $('nvgo').href = NAV.next.href + '#cont'; $('nvcard').style.display = 'block';
+    } else { nt.style.display = 'none'; }
+    if (NAV.list) { const tl = $('tolist'); tl.href = NAV.list; tl.style.display = 'inline-block'; }
+  })();
+  audio.addEventListener('error', () => { $('meta').textContent = '소리 파일을 불러오지 못했습니다. mp3 파일이 같은 폴더에 있는지 확인해 주세요.'; });
+
+  /* 단추 */
+  $('play').onclick = toggle;
+  $('back').onclick = () => seek((audio.currentTime || 0) - 10);
+  $('fwd').onclick = () => seek((audio.currentTime || 0) + 10);
+  $('prev').onclick = () => { const i = idxAt(audio.currentTime || 0); const cur = SEGS[i]; jump((cur && (audio.currentTime - cur.s) > 2) ? i : Math.max(0, i - 1)); };
+  $('next').onclick = () => jump(Math.min(SEGS.length - 1, idxAt(audio.currentTime || 0) + 1));
+  $('spd').onclick = () => { spd = (spd + 1) % SPEEDS.length; applySpd(); pref('spd', spd); };
+  $('fsm').onclick = () => { fsi = Math.max(0, fsi - 1); applyFs(); pref('fs', fsi); };
+  $('fbg').onclick = () => { fsi = Math.min(FS.length - 1, fsi + 1); applyFs(); pref('fs', fsi); };
+  $('prog').onclick = e => { const r = $('prog').getBoundingClientRect(); const d = audio.duration || DUR || 0; seek(((e.clientX - r.left) / r.width) * d); };
+  $('text').addEventListener('click', e => { const s = e.target.closest ? e.target.closest('.seg') : null; if (s) { jump(+s.getAttribute('data-i')); } });
+  document.addEventListener('keydown', e => {
+    if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) { return; }
+    if (e.code === 'Space') { e.preventDefault(); toggle(); }
+    else if (e.code === 'ArrowLeft') { seek((audio.currentTime || 0) - 10); }
+    else if (e.code === 'ArrowRight') { seek((audio.currentTime || 0) + 10); }
+  });
+  window.addEventListener('pagehide', () => { pref('pos', audio.currentTime || 0); });
+
+  /* 앞 글이 끝나서 열린 경우: 처음부터 자동 재생을 시도하고, 폰이 막으면 ▶ 재생을 기다립니다 */
+  const arrived = location.hash === '#cont';
+  if (arrived) { pref('pos', 0); try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
+  /* 이어 듣기 */
+  const pos = parseFloat(pref('pos'));
+  if (pos > 10 && pos < (DUR || 1e9) - 5) {
+    const r = $('resume'); r.style.display = 'block';
+    r.innerHTML = '지난번 <b>' + fmt(pos) + '</b>까지 들으셨어요. <button type="button" id="rb">이어 듣기</button>';
+    $('rb').onclick = () => { seek(pos); r.style.display = 'none'; play(); };
+  }
+  if (arrived) {
+    $('resume').style.display = 'none';
+    const n = $('nvnote'); n.style.display = 'block'; n.innerHTML = '다음 글을 열었습니다. 소리가 안 나오면 아래 <b>▶ 재생</b>을 눌러 주세요.';
+    $('play').classList.add('wait');
+    const pr = audio.play(); setPlaying(true); if (pr && pr.catch) { pr.catch(() => setPlaying(false)); }
+    audio.addEventListener('playing', () => { $('play').classList.remove('wait'); if (!n.getAttribute('data-cd')) { n.style.display = 'none'; } }, { once: true });
+  }
+  /* 전체 화면 (주소창 없이 글만 크게 보기). 지원하지 않는 기기에서는 단추를 숨깁니다 */
+  (function () {
+    const b = $('fs'), de = document.documentElement;
+    const req = de.requestFullscreen || de.webkitRequestFullscreen;
+    const ok = !!req && (document.fullscreenEnabled || document.webkitFullscreenEnabled);
+    if (!ok) { b.style.display = 'none'; return; }
+    const isFs = () => !!(document.fullscreenElement || document.webkitFullscreenElement);
+    const upd = () => { b.textContent = isFs() ? '⛶ 나가기' : '⛶ 전체'; b.setAttribute('aria-label', isFs() ? '전체 화면 나가기' : '전체 화면'); };
+    b.onclick = () => { try { if (isFs()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); } else { req.call(de); } } catch (e) {} };
+    document.addEventListener('fullscreenchange', upd); document.addEventListener('webkitfullscreenchange', upd); upd();
+    /* F 키: 전체 화면 켜기/끄기 (한글 입력 상태에서도 같은 자리의 키면 동작) */
+    document.addEventListener('keydown', e => {
+      if (e.target && /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) { return; }
+      if (e.code === 'KeyF' && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); b.onclick(); }
+    });
+  })();
+  window.__player = { jump, seek, toggle, mark, idxAt, audio, navApi, goNext };
+})();
+</script>
+</body>
+</html>
